@@ -20,11 +20,9 @@
   <%= @restaurant.downvote %>
 </p>
 
-<br>
-
 <p>
-  <%= button_to 'Up Vote', restaurants_path, :method => "get" %><br>
-  <%= button_to 'Down Vote', restaurants_path, :method => "get" %>
+  <%= link_to 'Up Vote', upvote_path(:restaurant_id => @restaurant.id) %> 
+  <%= link_to 'Down Vote', downvote_path(:restaurant_id => @restaurant.id) %>
 </p>
 
 

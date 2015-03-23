@@ -6,10 +6,35 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.order('name').page(params[:page]).per(15)
   end
+  
+  def upvote
+    unless params[:restaurant_id].nil?
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      new_up_vote = @restaurant[:upvote] + 1
+      @restaurant.update_attribute(:upvote, new_up_vote)
+    end
+    respond_to do |format|
+ 	  format.html { redirect_to restaurants_url} 
+ 	  format.json { head :no_content } 
+ 	end
+  end
+  
+  def downvote
+    unless params[:restaurant_id].nil?
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      new_down_vote = @restaurant[:downvote] + 1
+      @restaurant.update_attribute(:downvote, new_down_vote)
+    end
+    respond_to do |format|
+ 	  format.html { redirect_to restaurants_url} 
+ 	  format.json { head :no_content } 
+ 	end
+  end
 
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    @res
   end
 
   # GET /restaurants/new
