@@ -1,5 +1,18 @@
-<h1>Listing restaurants</h1>
+<h1>Listing restaurants</h1> 
 
+<%= search_form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :name_cont, "Name:" %>
+    <%= f.text_field :name_cont, :placeholder => 'Full or partial name' %>
+  </div>
+  <div class="field">
+    <%= f.label :address_or_city_or_state_or_zip_cont, "Location:" %>
+    <%= f.text_field :address_or_city_or_state_or_zip_cont, :placeholder => 'Full or partial location' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Search" %>
+  </div>
+<% end %>
   
 <table>
   <thead>
@@ -9,8 +22,8 @@
       <th>City</th>
       <th>State</th>
       <th>Zip</th>
-      <th>Upvote</th>
-      <th>Downvote</th>
+      <th>Will Split</th>
+      <th>Won't Split</th>
       <th colspan="3"></th>
     </tr>
   </thead>

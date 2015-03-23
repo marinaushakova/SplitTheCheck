@@ -4,7 +4,9 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.order('name').page(params[:page]).per(15)
+    @search = Restaurant.search(params[:q])
+    @restaurants = @search.result.order('name').page(params[:page]).per(15)
+    #@restaurants = Restaurant.order('name').page(params[:page]).per(15)
   end
   
   def upvote
