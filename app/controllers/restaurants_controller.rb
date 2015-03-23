@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [:show, :update]
 
   # GET /restaurants
   # GET /restaurants.json
@@ -53,13 +53,13 @@ class RestaurantsController < ApplicationController
 
   # DELETE /restaurants/1
   # DELETE /restaurants/1.json
-  def destroy
-    @restaurant.destroy
-    respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @restaurant.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
