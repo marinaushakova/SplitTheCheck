@@ -7,32 +7,25 @@
 
 <p>
   <strong>Address:</strong>
-  <%= @restaurant.address %>
+  <%= @restaurant.address %>, <%= @restaurant.city %>, <%= @restaurant.state %> <%= @restaurant.zip %>
 </p>
 
 <p>
-  <strong>City:</strong>
-  <%= @restaurant.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @restaurant.state %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @restaurant.zip %>
-</p>
-
-<p>
-  <strong>Upvote:</strong>
+  <strong>Split Votes:</strong>
   <%= @restaurant.upvote %>
 </p>
 
 <p>
-  <strong>Downvote:</strong>
+  <strong>Don't Split Votes:</strong>
   <%= @restaurant.downvote %>
 </p>
+
+<br>
+
+<p>
+  <%= button_to 'Up Vote', restaurants_path, :method => "get" %><br>
+  <%= button_to 'Down Vote', restaurants_path, :method => "get" %>
+</p>
+
 
 <%= link_to 'Back', restaurants_path %>
