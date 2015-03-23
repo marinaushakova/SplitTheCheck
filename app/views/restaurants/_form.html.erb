@@ -12,32 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label 'Restaurant Name (required)' %><br>
+    <%= f.text_field :name, size: 40 %>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
+    <%= f.label 'Street Address (required)' %><br>
+    <%= f.text_field :address, size: 40 %>
   </div>
   <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
+    <%= f.label 'City (required)' %><br>
+    <%= f.text_field :city, size: 40 %>
   </div>
   <div class="field">
-    <%= f.label :state %><br>
-    <%= f.text_field :state %>
+    <%= f.label 'State (required)' %><br>
+    <%= f.text_field :state, size: 10 %>
   </div>
   <div class="field">
-    <%= f.label :zip %><br>
-    <%= f.text_field :zip %>
-  </div>
-  <div class="field">
-    <%= f.label :upvote %><br>
-    <%= f.number_field :upvote %>
-  </div>
-  <div class="field">
-    <%= f.label :downvote %><br>
-    <%= f.number_field :downvote %>
+    <%= f.label 'Zip (required)' %><br>
+    <%= f.text_field :zip, size: 5 %>
   </div>
   <div class="actions">
     <%= f.submit %>
