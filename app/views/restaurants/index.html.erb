@@ -1,5 +1,6 @@
 <h1>Listing restaurants</h1>
 
+  
 <table>
   <thead>
     <tr>
@@ -13,6 +14,7 @@
       <th colspan="3"></th>
     </tr>
   </thead>
+  
 
   <tbody>
     <% @restaurants.each do |restaurant| %>
@@ -33,5 +35,10 @@
 </table>
 
 <br>
+
+<%= paginate @restaurants %>
+<%= page_entries_info @restaurants %>
+
+<br><br>
 
 <%= link_to 'New Restaurant', new_restaurant_path %>
