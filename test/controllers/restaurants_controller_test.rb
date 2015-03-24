@@ -29,21 +29,21 @@ class RestaurantsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, id: @restaurant
-    assert_response :success
-  end
-
   test "should update restaurant" do
-    patch :update, id: @restaurant, restaurant: { address: @restaurant.address, city: @restaurant.city, downvote: @restaurant.downvote, name: @restaurant.name, state: @restaurant.state, upvote: @restaurant.upvote, zip: @restaurant.zip }
+    get :update, id: @restaurant, restaurant: { address: @restaurant.address, city: @restaurant.city, downvote: @restaurant.downvote, name: @restaurant.name, state: @restaurant.state, upvote: @restaurant.upvote, zip: @restaurant.zip }
+    assert_redirected_to restaurant_path(assigns(:restaurant))
+  end
+  
+  test "should upvote" do
+	get :upvote, restaurant_id: @restaurant.id
+	assert_equal 2, Restaurant.find(@restaurant.id).upvote
+    assert_redirected_to restaurant_path(assigns(:restaurant))
+  end
+  
+  test "should downvote" do
+	get :downvote, restaurant_id: @restaurant.id
+	assert_equal 2, Restaurant.find(@restaurant.id).downvote
     assert_redirected_to restaurant_path(assigns(:restaurant))
   end
 
-  test "should destroy restaurant" do
-    assert_difference('Restaurant.count', -1) do
-      delete :destroy, id: @restaurant
-    end
-
-    assert_redirected_to restaurants_path
-  end
 end
