@@ -1,21 +1,22 @@
-<h1>Listing restaurants</h1> 
-
+<div id="search">
 <%= search_form_for @search do |f| %>
   <div class="field">
     <%= f.label :name_cont, "Name:" %>
-    <%= f.text_field :name_cont, :placeholder => 'Full or partial name' %>
+    <%= f.text_field :name_cont, :placeholder => 'Full or partial name', size: 11 %>
   </div>
   <div class="field">
     <%= f.label :address_or_city_or_state_or_zip_cont, "Location:" %>
-    <%= f.text_field :address_or_city_or_state_or_zip_cont, :placeholder => 'Full or partial location' %>
+    <%= f.text_field :address_or_city_or_state_or_zip_cont, :placeholder => 'Full or partial location', size: 11 %>
   </div>
   <div class="actions">
     <%= f.submit "Search" %>
   </div>
 <% end %>
-  
-<table>
-  <thead>
+</div>
+
+<div id="content"> 
+  <table>
+   <thead>
     <tr>
       <th>Name</th>
       <th>Address</th>
@@ -26,10 +27,10 @@
       <th>Won't Split</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+   </thead>
   
 
-  <tbody>
+   <tbody>
     <% @restaurants.each do |restaurant| %>
       <tr>
         <td><%= restaurant.name %></td>
@@ -42,14 +43,15 @@
         <td><%= link_to 'Vote', restaurant %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+   </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= paginate @restaurants %>
-<%= page_entries_info @restaurants %>
+  <%= paginate @restaurants %>
+  <%= page_entries_info @restaurants %>
 
-<br><br>
+  <br><br>
 
-<%= link_to 'New Restaurant', new_restaurant_path %>
+  <%= link_to "<button>Add New Restaurant</button>".html_safe, new_restaurant_path %><br><br>
+</div>

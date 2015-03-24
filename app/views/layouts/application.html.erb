@@ -7,8 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div id="wrapper">	
+  <div id="banner">
+    <%= image_tag("img_check_box.png") %>  
+    <h1>Split the Check</h1>
+  </div>
+  
 <%= yield %>
 
+</div>
 </body>
 </html>

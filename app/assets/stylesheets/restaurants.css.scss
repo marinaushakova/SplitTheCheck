@@ -1,3 +1,26 @@
 // Place all the styles related to the Restaurants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ table {
+   background: #000;
+}
+
+ tr:nth-child(even) {
+   background-color: #444;
+}
+
+th {
+   background-color: #444;
+   font-size: 13px;
+   line-height: 35px;
+}
+
+#search {
+    line-height:20px;
+    background-color:#000;
+    height: auto;
+    width:150px;
+    float:left;
+    padding:5px; 
+}

@@ -1,29 +1,40 @@
+<div id="content"> 
 <p id="notice"><%= notice %></p>
 
+  <div id="description">
+	<p>
+	  <strong>Name:</strong>
+	  <%= @restaurant.name %>
+	</p>
+
+	<p>
+	  <strong>Address:</strong>
+	  <%= @restaurant.address %>, <%= @restaurant.city %>, <%= @restaurant.state %> <%= @restaurant.zip %>
+	</p>
+
+	<p>
+	  <strong>Split Votes:</strong>
+	  <%= @restaurant.upvote %>
+	</p>
+
+	<p>
+	  <strong>Don't Split Votes:</strong>
+	  <%= @restaurant.downvote %>
+	</p>
+  </div>
+
+<br>
+
 <p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
+  <strong>Your Vote: </strong>
 </p>
 
 <p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>, <%= @restaurant.city %>, <%= @restaurant.state %> <%= @restaurant.zip %>
-</p>
-
-<p>
-  <strong>Split Votes:</strong>
-  <%= @restaurant.upvote %>
-</p>
-
-<p>
-  <strong>Don't Split Votes:</strong>
-  <%= @restaurant.downvote %>
-</p>
-
-<p>
-  <%= link_to 'Up Vote', upvote_path(:restaurant_id => @restaurant.id) %> 
-  <%= link_to 'Down Vote', downvote_path(:restaurant_id => @restaurant.id) %>
+  <%= link_to "<button>Split</button>".html_safe, upvote_path(:restaurant_id => @restaurant.id) %> 
+  <%= link_to "<button>Don't Split</button>".html_safe, downvote_path(:restaurant_id => @restaurant.id) %>
 </p>
 
 
-<%= link_to 'Back', restaurants_path %>
+<%= link_to 'Back', restaurants_path %><br><br>
+
+</div>
