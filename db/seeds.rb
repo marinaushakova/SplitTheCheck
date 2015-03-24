@@ -12,7 +12,7 @@ Restaurant.create!(name: 'Porttitor Interdum', address: '187 Dolor. Ave', city: 
 Restaurant.create!(name: 'Donec Dignissim Magna', address: '7338 Amet St.', city: 'Hoofddorp', state: 'NY.', zip: '72051', upvote: 251, downvote: 496)
 Restaurant.create!(name: 'Nonummy', address: '8942 Arcu Street', city: 'Vienna', state: 'NC', zip: '35385', upvote: 17, downvote: 146)
 Restaurant.create!(name: 'Cursus', address: '587 Lectus Avenue', city: 'Montague', state: 'CA', zip: '71229', upvote: 472, downvote: 31)
-Restaurant.create!(name: 'Aliquam Nec Enim', address: '8745 Egestas, St.', city: 'Petrópolis', state: 'SD de Janeiro', zip: '59501', upvote: 271, downvote: 37)
+Restaurant.create!(name: 'Aliquam Nec Enim', address: '8745 Egestas, St.', city: 'Petrópolis', state: 'SD', zip: '59501', upvote: 271, downvote: 37)
 Restaurant.create!(name: 'Quam', address: '8696 Porttitor St.', city: 'Diadema', state: 'MN', zip: '06459', upvote: 328, downvote: 231)
 Restaurant.create!(name: 'Aliquet', address: '594Quam Road', city: 'Neerrepen', state: 'WA', zip: '23716', upvote: 480, downvote: 388)
 Restaurant.create!(name: 'Cras Dictum', address: '5889 Donec Street', city: 'Township of Minden Hills', state: 'OR', zip: '15709', upvote: 159, downvote: 469)
