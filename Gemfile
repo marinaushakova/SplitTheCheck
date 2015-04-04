@@ -40,3 +40,4 @@ gem 'spring',        group: :development
 
 gem 'kaminari'
 gem 'ransack'
+gem 'devise'
