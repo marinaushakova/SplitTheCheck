@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vote: false
+  user_id: 
+  restaurant_id: 
+
+two:
+  vote: false
+  user_id: 
+  restaurant_id: 

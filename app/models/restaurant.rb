@@ -1,4 +1,7 @@
 class Restaurant < ActiveRecord::Base
+  has_many :votes
+  has_many :users, :through => :votes
+  
   validates :name, :address, :city, :state, :zip, presence: true
   validates_format_of :zip,
 	  with: /\A\d{5}-\d{4}|\A\d{5}\z/,
