@@ -38,8 +38,8 @@
         <td><%= restaurant.city %></td>
         <td><%= restaurant.state %></td>
         <td><%= restaurant.zip %></td>
-        <td><%= 0 %></td>
-        <td><%= 0 %></td>
+        <td><%= @votes.where(:restaurant_id => restaurant.id, :vote => true).count %></td>
+        <td><%= @votes.where(:restaurant_id => restaurant.id, :vote => false).count %></td>
         <td><%= link_to 'Vote', restaurant %></td>
       </tr>
     <% end %>

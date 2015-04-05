@@ -4,6 +4,7 @@ class RestaurantsController < ApplicationController
   def index
     @search = Restaurant.search(params[:q])
     @restaurants = @search.result.order('name').page(params[:page]).per(15)
+    @votes = Vote
   end
   
   def upvote
