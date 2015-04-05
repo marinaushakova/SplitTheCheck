@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :update]
+  before_action :set_votes, only: [:show, :update]
 
   def index
     @search = Restaurant.search(params[:q])
@@ -82,6 +83,10 @@ class RestaurantsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
       @restaurant = Restaurant.find(params[:id])
+    end
+    
+    def set_votes
+      @votes = Vote.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

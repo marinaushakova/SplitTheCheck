@@ -13,12 +13,12 @@
 
 	<p>
 	  <strong>Split Votes:</strong>
-	  <%= 0 %>
+	  <%= @votes.where(:restaurant_id => @restaurant.id, :vote => true).count %>
 	</p>
 
 	<p>
 	  <strong>Don't Split Votes:</strong>
-	  <%= 0 %>
+	  <%= @votes.where(:restaurant_id => @restaurant.id, :vote => false).count %>
 	</p>
   </div>
 
