@@ -11,8 +11,9 @@ class RestaurantsController < ApplicationController
     unless params[:restaurant_id].nil?
       @restaurant = Restaurant.find(params[:restaurant_id])
       params[:id] = @restaurant
-      new_up_vote = @restaurant[:upvote] + 1
-      @restaurant.update_attribute(:upvote, new_up_vote)
+      
+      @newVote = Vote.create!(vote: true, user_id: current_user.id, restaurant_id: @restaurant.id) 
+      
       respond_to do |format|
  	    format.html { redirect_to @restaurant, notice: 'Thank you for your vote.'} 
  	    format.json { render :show, status: :ok, location: @restaurant } 
@@ -23,8 +24,9 @@ class RestaurantsController < ApplicationController
   def downvote
     unless params[:restaurant_id].nil?
       @restaurant = Restaurant.find(params[:restaurant_id])
-      new_down_vote = @restaurant[:downvote] + 1
-      @restaurant.update_attribute(:downvote, new_down_vote)
+      
+      @newVote = Vote.create!(vote: false, user_id: current_user.id, restaurant_id: @restaurant.id) 
+      
       respond_to do |format|
  	    format.html { redirect_to @restaurant, notice: 'Thank you for your vote.'} 
  	    format.json { render :show, status: :ok, location: @restaurant }
