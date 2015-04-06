@@ -12,37 +12,43 @@ class RestaurantsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
+    sign_in User.first
     get :new
     assert_response :success
   end
 
   test "should create restaurant" do
+    sign_in User.first
     assert_difference('Restaurant.count') do
-      post :create, restaurant: { address: @restaurant.address, city: @restaurant.city, downvote: @restaurant.downvote, name: @restaurant.name, state: @restaurant.state, upvote: @restaurant.upvote, zip: @restaurant.zip }
+      post :create, restaurant: { address: @restaurant.address, city: @restaurant.city, name: @restaurant.name, state: @restaurant.state, zip: @restaurant.zip }
     end
 
     assert_redirected_to restaurant_path(assigns(:restaurant))
   end
 
   test "should show restaurant" do
+    sign_in User.first
     get :show, id: @restaurant
     assert_response :success
   end
 
   test "should update restaurant" do
-    get :update, id: @restaurant, restaurant: { address: @restaurant.address, city: @restaurant.city, downvote: @restaurant.downvote, name: @restaurant.name, state: @restaurant.state, upvote: @restaurant.upvote, zip: @restaurant.zip }
+    sign_in User.first
+    get :update, id: @restaurant, restaurant: { address: @restaurant.address, city: @restaurant.city, name: @restaurant.name, state: @restaurant.state, zip: @restaurant.zip }
     assert_redirected_to restaurant_path(assigns(:restaurant))
   end
   
   test "should upvote" do
+    sign_in User.first
 	get :upvote, restaurant_id: @restaurant.id
-	assert_equal 2, Restaurant.find(@restaurant.id).upvote
+	assert_equal 1, Vote.where(:restaurant_id => @restaurant.id, :vote => true).count
     assert_redirected_to restaurant_path(assigns(:restaurant))
   end
   
   test "should downvote" do
+    sign_in User.first
 	get :downvote, restaurant_id: @restaurant.id
-	assert_equal 2, Restaurant.find(@restaurant.id).downvote
+	assert_equal 1, Vote.where(:restaurant_id => @restaurant.id, :vote => false).count
     assert_redirected_to restaurant_path(assigns(:restaurant))
   end
 

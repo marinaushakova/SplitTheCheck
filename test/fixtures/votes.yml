@@ -2,10 +2,10 @@
 
 one:
   vote: false
-  user_id: 
-  restaurant_id: 
+  user_id: 1
+  restaurant_id: 1
 
 two:
   vote: false
-  user_id: 
-  restaurant_id: 
+  user_id: 1
+  restaurant_id: 1

@@ -6,14 +6,10 @@ one:
   city: MyString
   state: MyString
   zip: 12345
-  upvote: 1
-  downvote: 1
-
+  
 two:
   name: MyString
   address: MyString
   city: MyString
   state: MyString
   zip: 12345
-  upvote: 1
-  downvote: 1

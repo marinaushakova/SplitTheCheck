@@ -12,11 +12,13 @@ class VotesControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
+    sign_in User.first
     get :new
     assert_response :success
   end
 
   test "should create vote" do
+    sign_in User.first
     assert_difference('Vote.count') do
       post :create, vote: { restaurant_id: @vote.restaurant_id, user_id: @vote.user_id, vote: @vote.vote }
     end
@@ -25,6 +27,7 @@ class VotesControllerTest < ActionController::TestCase
   end
 
   test "should show vote" do
+    sign_in User.first
     get :show, id: @vote
     assert_response :success
   end
@@ -35,6 +38,7 @@ class VotesControllerTest < ActionController::TestCase
   end
 
   test "should update vote" do
+    sign_in User.first
     patch :update, id: @vote, vote: { restaurant_id: @vote.restaurant_id, user_id: @vote.user_id, vote: @vote.vote }
     assert_redirected_to vote_path(assigns(:vote))
   end
