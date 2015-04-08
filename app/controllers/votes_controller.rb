@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: [:show, :edit, :update, :destroy]
+  before_action :set_vote, only: [:show, :update ]
 
   respond_to :html
 

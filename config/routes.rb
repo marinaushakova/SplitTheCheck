@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :votes
-
+  
   devise_for :users
   root :to => "restaurants#index"
   
@@ -10,5 +9,5 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants, except: [:destroy, :edit]
-
+  #resources :votes, except: [:destroy, :edit, :update]
 end

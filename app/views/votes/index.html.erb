@@ -17,8 +17,6 @@
         <td><%= vote.user %></td>
         <td><%= vote.restaurant %></td>
         <td><%= link_to 'Show', vote %></td>
-        <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
-        <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
