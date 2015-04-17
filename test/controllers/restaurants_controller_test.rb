@@ -51,5 +51,17 @@ class RestaurantsControllerTest < ActionController::TestCase
 	assert_equal 1, Vote.where(:restaurant_id => @restaurant.id, :vote => false).count
     assert_redirected_to restaurant_path(assigns(:restaurant))
   end
+  
+  test "should count upvotes" do
+    sign_in User.first
+	5.times { get :upvote, restaurant_id: @restaurant.id }
+	assert_equal 5, Vote.where(:restaurant_id => @restaurant.id, :vote => true).count
+  end
+  
+  test "should count downvotes" do
+    sign_in User.first
+	3.times { get :downvote, restaurant_id: @restaurant.id }
+	assert_equal 3, Vote.where(:restaurant_id => @restaurant.id, :vote => false).count
+  end
 
 end
