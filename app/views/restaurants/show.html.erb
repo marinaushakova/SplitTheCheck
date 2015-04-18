@@ -36,11 +36,16 @@
 <br>
 
 <p>
-  <strong>Your Comment: </strong>
+  <strong>Your Comment (500 symbols max): </strong>
 </p>
 
-<%= link_to 'Leave a comment', new_comment_path %><br>
+<form action = "comment" class="actions" >
+  <textarea name="message" maxlength='500' cols="60" rows="6"></textarea><br>
+  <input type="hidden" name="restaurant_id" value=<%= @restaurant.id %>/><br>
+  <input type="submit" value = "Submit"/><br>
+</form> 
 
+<br>
 <%= link_to 'Back to list of restaurants', restaurants_path %><br><br>
 
 </div>

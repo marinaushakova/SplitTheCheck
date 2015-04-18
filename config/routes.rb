@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :comments
+  
 
   devise_for :users
   root :to => "restaurants#index"
@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   controller :restaurants do
     get 'restaurants/upvote' => 'restaurants#upvote', as: :upvote
     get 'restaurants/downvote' => 'restaurants#downvote', as: :downvote
+    get 'restaurants/comment' => 'restaurants#comment', as: :comment
   end
 
   resources :restaurants, except: [:destroy, :edit]
+  resources :comments
   #resources :votes, except: [:destroy, :edit, :update]
 end

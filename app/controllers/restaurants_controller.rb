@@ -10,6 +10,19 @@ class RestaurantsController < ApplicationController
     #@comments = Comment.where(:restaurant_id => @restaurant.id)
   end
   
+  def comment
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @message = params[:message]
+    params[:id] = @restaurant
+      
+    @newComment = Comment.create!(message: @message, user_id: current_user.id, restaurant_id: @restaurant.id)
+    
+    respond_to do |format|
+ 	    format.html { redirect_to @restaurant, notice: 'Thank you for your comment.'} 
+ 	    format.json { render :show, status: :ok, location: @restaurant } 
+ 	end
+  end
+  
   def upvote
     unless params[:restaurant_id].nil?
       @restaurant = Restaurant.find(params[:restaurant_id])
