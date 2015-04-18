@@ -33,6 +33,13 @@
   <%= link_to "<button>Don't Split</button>".html_safe, downvote_path(:restaurant_id => @restaurant.id) %>
 </p>
 
+<br>
+
+<p>
+  <strong>Your Comment: </strong>
+</p>
+
+<%= link_to 'Leave a comment', new_comment_path %><br>
 
 <%= link_to 'Back to list of restaurants', restaurants_path %><br><br>
 

@@ -1,11 +1,13 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :update]
   before_action :set_votes, only: [:show, :update]
+  before_action :set_comments, only: [:show, :update, :create]
 
   def index
     @search = Restaurant.search(params[:q])
     @restaurants = @search.result.order('name').page(params[:page]).per(15)
     @votes = Vote
+    #@comments = Comment.where(:restaurant_id => @restaurant.id)
   end
   
   def upvote
@@ -87,6 +89,10 @@ class RestaurantsController < ApplicationController
     
     def set_votes
       @votes = Vote.all
+    end
+    
+    def set_comments
+      @comments = Comment.where(:restaurant_id => @restaurant.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
