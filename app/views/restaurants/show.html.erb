@@ -48,4 +48,17 @@
 <br>
 <%= link_to 'Back to list of restaurants', restaurants_path %><br><br>
 
+<h2>Comments:</h2>
+<% @comments.each do |comment| %>
+  <hr>
+  <%= comment.created_at %>
+  <p>
+    <strong><%= comment.message %></strong>
+  </p>
+  <br>
+<% end %>
+
+<br>
+<%= link_to 'Back to list of restaurants', restaurants_path %><br><br>
+
 </div>

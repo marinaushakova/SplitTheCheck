@@ -51,6 +51,7 @@
 #content {
 	 background-color: #000;
 	 margin-left: 150px;
+	 margin-right: 30px;
 	 padding-top: 1px;
 	 padding-left: 20px;
 	 padding-right: 5px;
@@ -65,4 +66,8 @@
 	 width: 80%;
 	 margin-right: auto;
 	 margin-left: auto;
+}
+
+hr {
+    color: #ff0;
 }
