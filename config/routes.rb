@@ -13,5 +13,6 @@ Rails.application.routes.draw do
 
   resources :restaurants, except: [:destroy, :edit]
   resources :comments
+  resources :users, only: [:show]
   #resources :votes, except: [:destroy, :edit, :update]
 end
