@@ -34,6 +34,22 @@
 </p>
 
 <br>
+  <% if @favorites.where(:user_id => current_user.id).count == 0 %>
+    <p>
+      <strong>You can add this restaurant to your Favorite List:</strong>
+    </p>
+    <p>
+      <%= link_to "<button>Mark As Favorite</button>".html_safe, make_favorite_path(:restaurant_id => @restaurant.id) %>
+    </p>
+  <% else %>
+    <p>
+      <strong>This restaurant is in your Favorites List:</strong>
+    </p>
+    <p>
+      <%= link_to "<button>Remove From Favorites</button>".html_safe, remove_from_favorite_path(:restaurant_id => @restaurant.id) %>
+    </p>
+  <% end %>
+<br>
 
 <p>
   <strong>Your Comment (500 symbols max): </strong>

@@ -2,6 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :update]
   before_action :set_votes, only: [:show, :update]
   before_action :set_comments, only: [:show, :update, :create]
+  before_action :set_favorites, only: [:show, :create, :destroy]
 
   def index
     @search = Restaurant.search(params[:q])
@@ -21,6 +22,22 @@ class RestaurantsController < ApplicationController
  	    format.html { redirect_to @restaurant, notice: 'Thank you for your comment.'} 
  	    format.json { render :show, status: :ok, location: @restaurant } 
  	end
+  end
+  
+  def make_favorite
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    params[:id] = @restaurant
+    
+    @newFavotire = Favorite.create!(user_id: current_user.id, restaurant_id: @restaurant.id)
+    
+    respond_to do |format|
+ 	    format.html { redirect_to @restaurant, notice: 'The restaurant was marked as your favorite.'} 
+ 	    format.json { render :show, status: :ok, location: @restaurant } 
+ 	end
+  end
+  
+  def remove_from_favorite
+  
   end
   
   def upvote
@@ -106,6 +123,10 @@ class RestaurantsController < ApplicationController
     
     def set_comments
       @comments = Comment.where(:restaurant_id => @restaurant.id)
+    end
+    
+    def set_favorites
+      @favorites = Favorite.where(:restaurant_id => @restaurant.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

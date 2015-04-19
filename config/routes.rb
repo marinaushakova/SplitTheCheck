@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
   
-  
-
-  resources :favorites
-
   devise_for :users
   root :to => "restaurants#index"
   
@@ -11,9 +7,12 @@ Rails.application.routes.draw do
     get 'restaurants/upvote' => 'restaurants#upvote', as: :upvote
     get 'restaurants/downvote' => 'restaurants#downvote', as: :downvote
     get 'restaurants/comment' => 'restaurants#comment', as: :comment
+    get 'restaurants/favorite' => 'restaurants#make_favorite', as: :make_favorite
+    get 'restaurants/unfavorite' => 'restaurants#remove_from_favorite', as: :remove_from_favorite
   end
 
   resources :restaurants, except: [:destroy, :edit]
+  resources :favorites
   resources :comments
   resources :users, only: [:show]
   #resources :votes, except: [:destroy, :edit, :update]
