@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   
 
+  resources :favorites
+
   devise_for :users
   root :to => "restaurants#index"
   

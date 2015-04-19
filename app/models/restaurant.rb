@@ -1,8 +1,10 @@
 class Restaurant < ActiveRecord::Base
   has_many :votes
   has_many :comments
+  has_many :favorites
   has_many :users, :through => :votes
   has_many :users, :through => :comments
+  has_many :users, :through => :favorites
   
   validates :name, :address, :city, :state, :zip, presence: true
   validates_format_of :zip,
