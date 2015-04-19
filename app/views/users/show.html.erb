@@ -1,6 +1,27 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Your Votes:</h2>
 
+  <table>
+   <thead>
+    <tr>
+      <th>Date Voted</th>
+      <th>Restaurant</th>
+      <th>Vote</th>
+    </tr>
+   </thead>
+  
+   <tbody>
+    <% @votes.each do |vote| %>
+      <tr>
+        <td><%= vote.created_at.strftime("%m-%d-%y") %> at <%= vote.created_at.strftime("%H:%M") %></td>
+        <td><%= link_to vote.name, restaurant_path(:id => vote.rest_id) %></td>
+        <td><%= vote.vote ? "Split" : "Don't Split" %></td>
+      </tr>
+    <% end %>
+   </tbody>
+  </table>
+  <br>
 
 <h2>Your Comments:</h2>
 <% @comments.each do |comment| %>
