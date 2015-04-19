@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update]
+  before_action :set_comments, only: [:show]
+  before_action :set_votes, only: [:show]
+  before_action :set_restaurants, only: [:show]
 
   # GET /users
   # GET /users.json
@@ -75,6 +78,18 @@ class UsersController < ApplicationController
       if current_user.id == params[:id].to_i
         @user = User.find(params[:id])
       end
+    end
+    
+    def set_comments
+      @comments = Comment.where(:user_id => current_user.id)
+    end
+    
+    def set_votes
+      @votes = Vote.where(:user_id => current_user.id)
+    end
+    
+    def set_restaurants
+      @restaurants = Restaurant.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

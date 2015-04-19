@@ -1,5 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+
+
+<h2>Your Comments:</h2>
+<% @comments.each do |comment| %>
+  <hr>
+  <%= comment.created_at %> 
+  <p>
+    You left a comment for <%= link_to @restaurants.where(:id => comment.restaurant_id)[0].name, restaurant_path(:id => comment.restaurant_id) %>
+  </p>
+  <p>
+    <strong><%= comment.message %></strong>
+  </p>
+  <br>
+<% end %>
+
 your email is: <%= current_user.email %>
 logged in user id is: <%= current_user.id %>
 page of the user with id: <%= @user.id %>
