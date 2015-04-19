@@ -87,7 +87,11 @@ class UsersController < ApplicationController
     def set_votes
       @votes = Vote.find_by_sql([%Q{SELECT v.created_at, r.id as rest_id, r.name as name, v.vote
 								   FROM votes v JOIN restaurants r ON v.restaurant_id = r.id
-								   WHERE v.user_id = ? }, current_user.id])
+								   WHERE v.user_id = ?}, current_user.id])
+								   
+								   # COUNT(v.vote) as count
+								   # GROUP BY r.name, v.vote
+								   
       #.find_by_sql([%Q{select r.id as rest_id, r.name as name, 
 	#							   count(select * from votes 
 	#									 where restaurant_id = rest_id AND user_id = ? AND vote = true) as upvotes,
