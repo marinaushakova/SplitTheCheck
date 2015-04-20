@@ -137,7 +137,6 @@ class RestaurantsController < ApplicationController
 										         u.email as email
 										  FROM comments c JOIN users u ON c.user_id = u.id
 										  WHERE c.restaurant_id = ?}, @restaurant.id])
-      #@comments = Comment.where(:restaurant_id => @restaurant.id)
     end
     
     def set_favorites

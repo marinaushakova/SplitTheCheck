@@ -65,5 +65,28 @@ class RestaurantsControllerTest < ActionController::TestCase
 	3.times { get :downvote, restaurant_id: @restaurant.id }
 	assert_equal 3, Vote.where(:restaurant_id => @restaurant.id, :vote => false).count
   end
+  
+  test "should make favorite" do
+    sign_in User.first
+	get :make_favorite, restaurant_id: @restaurant.id
+	assert_equal 1, Favorite.where(:restaurant_id => @restaurant.id, :user => User.first).count
+    assert_redirected_to restaurant_path(assigns(:restaurant))
+  end
+  
+  test "should remove from favorite" do
+    sign_in User.first
+	get :make_favorite, restaurant_id: @restaurant.id
+	assert_equal 1, Favorite.where(:restaurant_id => @restaurant.id, :user => User.first).count
+	get :remove_from_favorite, restaurant_id: @restaurant.id
+	assert_equal 0, Favorite.where(:restaurant_id => @restaurant.id, :user => User.first).count
+    assert_redirected_to restaurant_path(assigns(:restaurant))
+  end
+  
+  test "should create comment" do
+    sign_in User.first
+	get :comment, restaurant_id: @restaurant.id, message: "test"
+	assert_equal 1, Comment.where(:restaurant_id => @restaurant.id, :message => "test").count
+    assert_redirected_to restaurant_path(assigns(:restaurant))
+  end
 
 end
