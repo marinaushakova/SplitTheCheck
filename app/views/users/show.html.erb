@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Your Favorite Restaurants:</h2>
-
+<% if @favorite_restaurants.size > 0 %>
   <table>
    <thead>
     <tr>
@@ -19,10 +19,15 @@
     <% end %>
    </tbody>
   </table>
+  
+<% else %>
+  <p>You don't have any restaurants in your Favorite List</p>
+<% end %>
   <br>
 
 
 <h2>Your Votes:</h2>
+<% if @votes.size > 0 %>
 
   <table>
    <thead>
@@ -43,19 +48,27 @@
     <% end %>
    </tbody>
   </table>
+<% else %>
+  <p>You haven't voted for any restaurants yet</p>
+<% end %>
   <br>
+
 
 <h2>Your Comments:</h2>
-<% @comments.each do |comment| %>
-  <hr>
-  On <%= comment.created_at.strftime("%m-%d-%y") %> at <%= comment.created_at.strftime("%I:%M %p") %> 
-  you left a comment for <%= link_to @restaurants.where(:id => comment.restaurant_id)[0].name, restaurant_path(:id => comment.restaurant_id) %>:
+<% if @comments.size > 0 %>
+  <% @comments.each do |comment| %>
+    <hr>
+    On <%= comment.created_at.strftime("%m-%d-%y") %> at <%= comment.created_at.strftime("%I:%M %p") %> 
+    you left a comment for <%= link_to @restaurants.where(:id => comment.restaurant_id)[0].name, restaurant_path(:id => comment.restaurant_id) %>:
 
-  <p>
-    <strong><%= comment.message %></strong>
-  </p>
-  <br>
+    <p>
+      <strong><%= comment.message %></strong>
+     </p>
+    <br>
     <%= link_to 'Back to top', user_path(:id => current_user.id) %><br>
+  <% end %>
+<% else %>
+  <p>You haven't commented on any restaurants yet</p>
 <% end %>
 
 <br>
