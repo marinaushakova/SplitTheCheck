@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: [:show, :update]
   before_action :set_comments, only: [:show]
   before_action :set_votes, only: [:show]
@@ -104,6 +105,9 @@ class UsersController < ApplicationController
     
     def set_restaurants
       @restaurants = Restaurant.all
+      @favorite_restaurants = Restaurant.find_by_sql([%Q{SELECT r.id, r.name, r.address, r.city, r.state, r.zip, f.restaurant_id
+														 FROM restaurants r JOIN favorites f ON r.id = f.restaurant_id
+														 WHERE f.user_id = ?}, current_user.id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

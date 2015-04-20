@@ -1,5 +1,27 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Your Favorite Restaurants:</h2>
+
+  <table>
+   <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+    </tr>
+   </thead>
+  
+   <tbody>
+    <% @favorite_restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= link_to restaurant.name, restaurant_path(:id => restaurant.id) %></td>
+        <td><%= restaurant.address %>, <%= restaurant.city %>, <%= restaurant.state %> <%= restaurant.zip %></td>
+      </tr>
+    <% end %>
+   </tbody>
+  </table>
+  <br>
+
+
 <h2>Your Votes:</h2>
 
   <table>
