@@ -63,18 +63,26 @@
 </form> 
 <% end %>
 <br>
-<%= link_to 'Back to list of restaurants', restaurants_path %><br><br>
 
-<h2>Comments:</h2>
-<% @comments.each do |comment| %>
-  <hr>
-  <%= comment.created_at %>
-  <p>
-    <strong><%= comment.message %></strong>
-  </p>
-  <br>
+<% if @comments.size > 0 %>
+  <%= link_to 'Back to list of restaurants', restaurants_path %><br><br>
 <% end %>
 
+<h2>Comments:</h2>
+<% if @comments.size > 0 %>
+  <% @comments.each do |comment| %>
+    <hr>
+    User <%= comment.email %> commented 
+    on <%= comment.created_at.strftime("%m-%d-%y") %> at <%= comment.created_at.strftime("%I:%M %p") %>
+    <p>
+      <strong><%= comment.message %></strong>
+    </p>
+    <br>
+    <%= link_to 'Back to top', @restaurant %><br>
+  <% end %>
+<% else %>
+  <p>Nobody has commented on this restaurant yet.</p>
+<% end %>
 <br>
 <%= link_to 'Back to list of restaurants', restaurants_path %><br><br>
 
