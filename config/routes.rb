@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants, except: [:destroy, :edit]
-  resources :favorites
-  resources :comments
-  resources :users, only: [:show]
+  resources :favorites, only: [:create, :destroy]
+  resources :comments, only: [:create]
+  resources :users, only: [:show, :create]
   #resources :votes, except: [:destroy, :edit, :update]
 end

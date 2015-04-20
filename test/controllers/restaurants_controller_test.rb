@@ -3,6 +3,9 @@ require 'test_helper'
 class RestaurantsControllerTest < ActionController::TestCase
   setup do
     @restaurant = restaurants(:one)
+    @votes = votes
+    @comments = comments
+    @favorites = favorites
   end
 
   test "should get index" do
@@ -27,8 +30,7 @@ class RestaurantsControllerTest < ActionController::TestCase
   end
 
   test "should show restaurant" do
-    sign_in User.first
-    get :show, id: @restaurant
+    get :show , id: @restaurant
     assert_response :success
   end
 

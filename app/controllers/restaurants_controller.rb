@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :update]
-  before_action :set_votes, only: [:show, :update]
-  before_action :set_comments, only: [:show, :update, :create]
+  before_action :set_votes, only: [:show]
+  before_action :set_comments, only: [:show]
   before_action :set_favorites, only: [:show]
 
   def index

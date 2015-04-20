@@ -23,7 +23,7 @@
   </div>
 
 <br>
-
+<% if current_user.present? %>
 <p>
   <strong>Your Vote: </strong>
 </p>
@@ -34,6 +34,7 @@
 </p>
 
 <br>
+  
   <% if @favorites.where(:user_id => current_user.id).count == 0 %>
     <p>
       <strong>You can add this restaurant to your Favorite List:</strong>
@@ -60,7 +61,7 @@
   <input type="hidden" name="restaurant_id" value=<%= @restaurant.id %>/><br>
   <input type="submit" value = "Submit"/><br>
 </form> 
-
+<% end %>
 <br>
 <%= link_to 'Back to list of restaurants', restaurants_path %><br><br>
 

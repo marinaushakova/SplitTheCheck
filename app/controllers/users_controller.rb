@@ -92,15 +92,6 @@ class UsersController < ApplicationController
 								   
 								   # COUNT(v.vote) as count
 								   # GROUP BY r.name, v.vote
-								   
-      #.find_by_sql([%Q{select r.id as rest_id, r.name as name, 
-	#							   count(select * from votes 
-	#									 where restaurant_id = rest_id AND user_id = ? AND vote = true) as upvotes,
-	#							   count(select * from votes
-	#									 where restaurant_id = rest_id AND user_id = ? AND vote = false) as downvotes
-	#							   from restaurants r
-	#							   where user_id = ?
-	#							   group by name; }, current_user.id])
     end
     
     def set_restaurants
