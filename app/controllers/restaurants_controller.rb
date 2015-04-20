@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :update]
   before_action :set_votes, only: [:show, :update]
   before_action :set_comments, only: [:show, :update, :create]
-  before_action :set_favorites, only: [:show, :create, :destroy]
+  before_action :set_favorites, only: [:show]
 
   def index
     @search = Restaurant.search(params[:q])
@@ -28,7 +28,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     params[:id] = @restaurant
     
-    @newFavotire = Favorite.create!(user_id: current_user.id, restaurant_id: @restaurant.id)
+    @newFavorite = Favorite.create!(user_id: current_user.id, restaurant_id: @restaurant.id)
     
     respond_to do |format|
  	    format.html { redirect_to @restaurant, notice: 'The restaurant was marked as your favorite.'} 
@@ -37,7 +37,18 @@ class RestaurantsController < ApplicationController
   end
   
   def remove_from_favorite
-  
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    params[:id] = @restaurant
+    
+    @favorite = Favorite.where(:restaurant_id => params[:restaurant_id], :user_id => current_user.id).first
+    
+    if @favorite.present?
+      @favorite.destroy()
+    end
+    respond_to do |format|
+ 	  format.html { redirect_to @restaurant, notice: 'The restaurant was removed from your Favorites.'} 
+ 	  format.json { render :show, status: :ok, location: @restaurant } 
+ 	end
   end
   
   def upvote

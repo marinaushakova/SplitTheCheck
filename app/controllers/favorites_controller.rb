@@ -33,7 +33,6 @@ class FavoritesController < ApplicationController
 
   def destroy
     @favorite.destroy
-    respond_with(@favorite)
   end
 
   private
