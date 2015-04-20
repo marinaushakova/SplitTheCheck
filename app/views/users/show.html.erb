@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<div id="content"> 
+
 <h2>Your Favorite Restaurants:</h2>
 <% if @favorite_restaurants.size > 0 %>
   <table>
@@ -53,6 +55,11 @@
 <% end %>
   <br>
 
+<% if @comments.size > 3 %>
+  <br>
+  <%= link_to 'Back to list of restaurants', restaurants_path %>
+  <br>
+<% end %>
 
 <h2>Your Comments:</h2>
 <% if @comments.size > 0 %>
@@ -74,3 +81,5 @@
 <br>
 <%= link_to 'Back to list of restaurants', restaurants_path %>
 <br>
+
+</div>

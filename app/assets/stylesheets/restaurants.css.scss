@@ -7,11 +7,13 @@
 }
 
  tr:nth-child(even) {
-   background-color: #444;
+   background-color: #440;
+   color: #ff0;
 }
 
 th {
-   background-color: #444;
+   background-color: #440;
+   color: #ff0;
    font-size: 13px;
    line-height: 35px;
 }
