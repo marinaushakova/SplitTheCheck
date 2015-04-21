@@ -22,15 +22,15 @@
    </tbody>
   </table>
   
+  <%= paginate @favorite_restaurants %> 
+  <%= page_entries_info @favorite_restaurants %> 
+   
+  <br><br> 
 <% else %>
   <p>You don't have any restaurants in your Favorite List</p>
 <% end %>
   <br>
 
-  <%= paginate @favorite_restaurants %> 
-  <%= page_entries_info @favorite_restaurants %> 
-   
-  <br><br> 
 
 <h2>Your Votes:</h2>
 <% if @votes.size > 0 %>
@@ -54,15 +54,16 @@
     <% end %>
    </tbody>
   </table>
+  
+  <%= paginate @votes %> 
+  <%= page_entries_info @votes %> 
+   
+  <br><br> 
 <% else %>
   <p>You haven't voted for any restaurants yet</p>
 <% end %>
   <br>
 
-  <%= paginate @votes %> 
-  <%= page_entries_info @votes %> 
-   
-  <br><br> 
 
 
 <% if @comments.size > 3 %>
