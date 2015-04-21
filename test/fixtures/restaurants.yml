@@ -7,7 +7,8 @@ one:
   state: MyString
   zip: 12345
   
-two:
+rest_two:
+  id: 1
   name: MyString
   address: MyString
   city: MyString
