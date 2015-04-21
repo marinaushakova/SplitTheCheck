@@ -89,6 +89,8 @@ class UsersController < ApplicationController
       @votes = Vote.find_by_sql([%Q{SELECT v.created_at, r.id as rest_id, r.name as name, v.vote
 								   FROM votes v JOIN restaurants r ON v.restaurant_id = r.id
 								   WHERE v.user_id = ?}, current_user.id])
+	
+	  @votes = Kaminari.paginate_array(@votes).page(params[:page]).per(10)	
 								   
 								   # COUNT(v.vote) as count
 								   # GROUP BY r.name, v.vote
@@ -99,6 +101,7 @@ class UsersController < ApplicationController
       @favorite_restaurants = Restaurant.find_by_sql([%Q{SELECT r.id, r.name, r.address, r.city, r.state, r.zip, f.restaurant_id
 														 FROM restaurants r JOIN favorites f ON r.id = f.restaurant_id
 														 WHERE f.user_id = ?}, current_user.id])
+	  @favorite_restaurants = Kaminari.paginate_array(@favorite_restaurants).page(params[:page]).per(10)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
