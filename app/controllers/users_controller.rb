@@ -82,13 +82,13 @@ class UsersController < ApplicationController
     end
     
     def set_comments
-      @comments = Comment.where(:user_id => current_user.id)
+      @comments = Comment.where(:user_id => current_user.id).reverse
     end
     
     def set_votes
       @votes = Vote.find_by_sql([%Q{SELECT v.created_at, r.id as rest_id, r.name as name, v.vote
 								   FROM votes v JOIN restaurants r ON v.restaurant_id = r.id
-								   WHERE v.user_id = ?}, current_user.id])
+								   WHERE v.user_id = ?}, current_user.id]).reverse
 	
 	  @votes = Kaminari.paginate_array(@votes).page(params[:page]).per(10)	
 								   

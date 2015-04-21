@@ -136,7 +136,7 @@ class RestaurantsController < ApplicationController
       @comments = Comment.find_by_sql([%Q{SELECT c.created_at, c.id, c.user_id, c.message, c.restaurant_id,
 										         u.email as email
 										  FROM comments c JOIN users u ON c.user_id = u.id
-										  WHERE c.restaurant_id = ?}, @restaurant.id])
+										  WHERE c.restaurant_id = ?}, @restaurant.id]).reverse
     end
     
     def set_favorites
